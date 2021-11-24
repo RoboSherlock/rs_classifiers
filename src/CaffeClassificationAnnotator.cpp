@@ -154,14 +154,14 @@ public:
 
         if(tempFloat >= 0.3)
         {
-          putText(tempImage, (tempStr1 + tempStr), cvPoint(5 + s.width + crtX, tempY + 15),
-                  FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 255, 0), 1, CV_AA);
+          putText(tempImage, (tempStr1 + tempStr), cv::Point(5 + s.width + crtX, tempY + 15),
+                  FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(0, 255, 0), 1, cv::LINE_AA);
 
         }
         else
         {
-          putText(tempImage, (tempStr1 + tempStr), cvPoint(5 + s.width + crtX, tempY + 15),
-                  FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(102, 0, 102), 1, CV_AA);
+          putText(tempImage, (tempStr1 + tempStr), cv::Point(5 + s.width + crtX, tempY + 15),
+                  FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(102, 0, 102), 1, cv::LINE_AA);
         }
         tempY += 15;
       }

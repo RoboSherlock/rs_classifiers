@@ -19,7 +19,7 @@ find_package(Caffe QUIET)
 find_package(aruco QUIET)
 find_package(MPI QUIET)
 
-find_package(Boost REQUIRED COMPONENTS python numpy)
+find_package(Boost REQUIRED COMPONENTS system thread date_time python numpy filesystem regex)
 find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_DIRS})
 
@@ -180,25 +180,25 @@ rs_add_library(rs_ssdDetectionAnnotator src/SSDDetectionAnnotator.cpp)
 target_link_libraries(rs_ssdDetectionAnnotator
     ${CATKIN_LIBRARIES}
     ${OpenCV_LIBRARIES}
-    boost_numpy)
+    ${Boost_LIBRARIES})
 
 rs_add_library(rs_fasterRCNNDetectionAnnotator src/FasterRCNNDetectionAnnotator.cpp)
 target_link_libraries(rs_fasterRCNNDetectionAnnotator
     ${CATKIN_LIBRARIES}
     ${OpenCV_LIBRARIES}
-    boost_numpy)
+     ${Boost_LIBRARIES})
 
 rs_add_library(rs_fcisInstanceSegmentationAnnotator src/FCISInstanceSegmentationAnnotator.cpp)
 target_link_libraries(rs_fcisInstanceSegmentationAnnotator
     ${CATKIN_LIBRARIES}
     ${OpenCV_LIBRARIES}
-    boost_numpy)
+    ${Boost_LIBRARIES})
 
 rs_add_library(rs_maskRCNNInstanceSegmentationAnnotator src/MaskRCNNInstanceSegmentationAnnotator.cpp)
 target_link_libraries(rs_maskRCNNInstanceSegmentationAnnotator
     ${CATKIN_LIBRARIES}
     ${OpenCV_LIBRARIES}
-    boost_numpy)
+    ${Boost_LIBRARIES})
 
 # download and install trained data
 add_custom_target(install_trained_data ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_trained_data.py)
