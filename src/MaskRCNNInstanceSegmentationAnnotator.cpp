@@ -17,7 +17,7 @@
 
 
 namespace python = boost::python;
-namespace np = boost::numpy;
+namespace np = boost::python::numpy;
 
 using namespace uima;
 
@@ -150,6 +150,9 @@ private:
       roi.roi_hires(rs::conversion::to(tcas, bbox_hires));
       roi.mask(rs::conversion::to(tcas, mask_lowres));
       roi.mask_hires(rs::conversion::to(tcas, mask_hires));
+
+        //TODO: fix this, why is cluster now missing from rs?
+        /*
       rs::Cluster cluster = rs::create<rs::Cluster>(tcas);
       cluster.rois(roi);
       rs::Classification classification = rs::create<rs::Classification>(tcas);
@@ -158,7 +161,7 @@ private:
       classification.classifier.set("MaskRCNN");
       classification.source.set("MaskRCNNInstanceSegmentationAnnotator");
       cluster.annotations.append(classification);
-      scene.identifiables.append(cluster);
+      scene.identifiables.append(cluster);*/
     }
 
     return UIMA_ERR_NONE;

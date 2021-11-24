@@ -10,17 +10,12 @@
 #include <ros/package.h>
 
 #include <opencv2/opencv.hpp>
-#if CV_MAJOR_VERSION == 2
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/ml/ml.hpp>
-#elif CV_MAJOR_VERSION == 3
+
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/ml.hpp>
-#endif
+
 
 #include <rs_addons/classifiers/RSRF.h>
 
@@ -44,32 +39,7 @@ void RSRF::trainModel(std::string train_matrix_name, std::string train_label_nam
 
   if(!pathToSaveModel.empty())
   {
-#if CV_MAJOR_VERSION == 2
-    //set parameters for random forest algorithm ............................
-    cv::Mat var_type = cv::Mat(train_matrix.cols + 1, 1, CV_8U);
-    var_type.setTo(Scalar(CV_VAR_NUMERICAL));
-    var_type.at<uchar>(train_matrix.cols, 0) = CV_VAR_CATEGORICAL;
 
-    CvRTParams params = CvRTParams(25,    // max depth
-                                   10,    // min sample count
-                                   0,     // regression accuracy
-                                   false, // compute surrogate split
-                                   15,    // max number of categories
-                                   NULL, // the array of priors
-                                   false,  // calculate variable importance
-                                   4,      // number of variables randomly selected at node and used to find the best split(s).
-                                   100,    // max number of trees in the forest
-                                   0.01f,  // forrest accuracy
-                                   CV_TERMCRIT_ITER | CV_TERMCRIT_EPS // termination cirteria
-                                   );
-
-
-    CvRTrees *rtree = new CvRTrees;
-
-    //train the random forest.....................................
-    rtree->train(train_matrix, CV_ROW_SAMPLE, train_label, cv::Mat(), cv::Mat(), var_type, cv::Mat(), params);
-
-#elif CV_MAJOR_VERSION == 3
 
     cv::Mat var_type = cv::Mat(train_matrix.cols +1, 1, CV_8U);
     var_type.setTo(cv::Scalar(cv::ml::VAR_NUMERICAL));
@@ -100,7 +70,7 @@ void RSRF::trainModel(std::string train_matrix_name, std::string train_label_nam
     rtree->train(trainData);
     //rtree->train(train_matrix, cv::ml::ROW_SAMPLE, train_label);
 
-#endif
+
 
     //To save the trained data.............................
     rtree->save((pathToSaveModel).c_str());
@@ -157,16 +127,9 @@ void RSRF::classify(std::string trained_file_name_saved, std::string test_matrix
 
 
   //To load the trained data
-#if CV_MAJOR_VERSION == 2
-  CvRTrees* rtree = new CvRTrees;
-  rtree->load((loadTrained(trained_file_name_saved)).c_str());
 
-//  int numberOfCls=nclasses;
-//  int sizeOfTree=ntrees;
-//  std::cout<<numberOfCls<<sizeOfTree;
-#elif CV_MAJOR_VERSION == 3
   cv::Ptr<cv::ml::RTrees> rtree = cv::Algorithm::load<cv::ml::RTrees>(cv::String(loadTrained(trained_file_name_saved)));
-#endif
+
 
   //convert test label matrix into a vector
   std::vector<double> con_test_label;
@@ -179,11 +142,9 @@ void RSRF::classify(std::string trained_file_name_saved, std::string test_matrix
 
   for(int i = 0; i < test_label.rows; i++)
   {
-#if CV_MAJOR_VERSION == 2
-      double res = rtree->predict(test_matrix.row(i), cv::Mat());
-#elif CV_MAJOR_VERSION == 3
+
       double res = rtree->predict(test_matrix.row(i));
-#endif
+
       int prediction = res;
 
 //      int class_index=res-1;
@@ -209,15 +170,11 @@ void RSRF::classifyOnLiveData(std::string trained_file_name_saved, cv::Mat test_
      std::cout << "size of test matrix :" << test_mat.size() << std::endl;
 
      //To load the trained data................................
-#if CV_MAJOR_VERSION == 2
-     CvRTrees rtree;//= new cv::CvRTrees();
-     rtree.load((loadTrained(trained_file_name_saved)).c_str());
-     double res = rtree.predict(test_mat, cv::Mat());
-#elif CV_MAJOR_VERSION == 3
+
      cv::Ptr<cv::ml::RTrees> rtree = cv::Algorithm::load<cv::ml::RTrees>(cv::String(loadTrained(trained_file_name_saved)));
 
      double res = rtree->predict(test_mat);
-#endif
+
 
      int class_index=res-1;
 //     double numberOfTrees=predict_multi_class(test_mat, out_votes);

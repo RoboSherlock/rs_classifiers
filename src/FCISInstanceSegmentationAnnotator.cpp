@@ -150,7 +150,8 @@ private:
       roi.roi_hires(rs::conversion::to(tcas, bbox_hires));
       roi.mask(rs::conversion::to(tcas, mask_lowres));
       roi.mask_hires(rs::conversion::to(tcas, mask_hires));
-      rs::Cluster cluster = rs::create<rs::Cluster>(tcas);
+        //TODO: fix this, why is cluster now missing from rs?
+   /*   robosherlock::Cluster cluster = robosherlock::create<robosherlock::Cluster>(tcas);
       cluster.rois(roi);
       rs::Classification classification = rs::create<rs::Classification>(tcas);
       classification.classification_type.set("CLASS");
@@ -158,7 +159,7 @@ private:
       classification.classifier.set("FCIS");
       classification.source.set("FCISInstanceSegmentationAnnotator");
       cluster.annotations.append(classification);
-      scene.identifiables.append(cluster);
+      scene.identifiables.append(cluster);*/
     }
 
     return UIMA_ERR_NONE;

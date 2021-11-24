@@ -370,9 +370,9 @@ public:
       outDebug(point_2d_0 << point_2d_1 << point_2d_2);
 
 
-      cv::line(negative, point_2d_0, point_2d_1, cv::Scalar(255), 1, CV_AA);
-      cv::line(negative, point_2d_1, point_2d_2, cv::Scalar(255), 1, CV_AA);
-      cv::line(negative, point_2d_2, point_2d_0, cv::Scalar(255), 1, CV_AA);
+      cv::line(negative, point_2d_0, point_2d_1, cv::Scalar(255), 1, cv::LINE_AA);
+      cv::line(negative, point_2d_1, point_2d_2, cv::Scalar(255), 1, cv::LINE_AA);
+      cv::line(negative, point_2d_2, point_2d_0, cv::Scalar(255), 1, cv::LINE_AA);
 
       //      cv::cvtColor(negative, negative, CV_BGR2GRAY);
     }

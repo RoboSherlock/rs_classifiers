@@ -132,7 +132,9 @@ private:
       rs::ImageROI roi = rs::create<rs::ImageROI>(tcas);
       roi.roi(rs::conversion::to(tcas, bbox_lowres));
       roi.roi_hires(rs::conversion::to(tcas, bbox_hires));
-      rs::Cluster cluster = rs::create<rs::Cluster>(tcas);
+
+      //TODO: fix this, why is cluster now missing from rs?
+   /* rs::Cluster cluster = rs::create<rs::Cluster>(tcas);
       cluster.rois(roi);
       rs::Classification classification = rs::create<rs::Classification>(tcas);
       classification.classification_type.set("CLASS");
@@ -140,7 +142,7 @@ private:
       classification.classifier.set("SSD");
       classification.source.set("SSDDetectionAnnotator");
       cluster.annotations.append(classification);
-      scene.identifiables.append(cluster);
+      scene.identifiables.append(cluster);*/
     }
 
     return UIMA_ERR_NONE;

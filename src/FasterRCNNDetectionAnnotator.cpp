@@ -19,7 +19,7 @@
 
 
 namespace python = boost::python;
-namespace np = boost::numpy;
+namespace np = boost::python::numpy;
 
 using namespace uima;
 
@@ -131,7 +131,8 @@ private:
       rs::ImageROI roi = rs::create<rs::ImageROI>(tcas);
       roi.roi(rs::conversion::to(tcas, bbox_lowres));
       roi.roi_hires(rs::conversion::to(tcas, bbox_hires));
-      rs::Cluster cluster = rs::create<rs::Cluster>(tcas);
+        //TODO: fix this, why is cluster now missing from rs?
+     /* robosherlock::Cluster cluster = robosherlock::create<robosherlock::Cluster>(tcas);
       cluster.rois(roi);
       rs::Classification classification = rs::create<rs::Classification>(tcas);
       classification.classification_type.set("CLASS");
@@ -139,7 +140,7 @@ private:
       classification.classifier.set("FasterRCNN");
       classification.source.set("FasterRCNNDetectionAnnotator");
       cluster.annotations.append(classification);
-      scene.identifiables.append(cluster);
+      scene.identifiables.append(cluster);*/
     }
 
     return UIMA_ERR_NONE;

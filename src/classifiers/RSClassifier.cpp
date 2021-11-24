@@ -11,17 +11,12 @@
 #include <boost/filesystem.hpp>
 
 #include <opencv2/opencv.hpp>
-#if CV_MAJOR_VERSION == 2
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/ml/ml.hpp>
-#elif CV_MAJOR_VERSION == 3
+
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/ml.hpp>
-#endif
+
 
 #include <robosherlock/types/all_types.h>
 #include <robosherlock/scene_cas.h>
