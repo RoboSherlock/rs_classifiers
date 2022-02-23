@@ -1,9 +1,0 @@
-annotator:
-  implementation: rs_unrealTableScene
-  name: UnrealTableScene
-capabilities:
-  inputs: []
-  outputs: []
-parameters:
-  variations: 200
-  withStorage: true

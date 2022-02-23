@@ -1,9 +1,0 @@
-annotator:
-  implementation: rs_offScreenSceneVariation
-  name: OffScreenSceneVariation
-capabilities:
-  inputs: []
-  outputs: []
-parameters:
-  variations: 30
-  withStorage: true

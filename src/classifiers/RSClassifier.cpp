@@ -22,7 +22,7 @@
 #include <robosherlock/scene_cas.h>
 #include <robosherlock/utils/time.h>
 
-#include <rs_addons/classifiers/RSClassifier.h>
+#include <rs_classifiers/classifiers/RSClassifier.h>
 
 using namespace cv;
 

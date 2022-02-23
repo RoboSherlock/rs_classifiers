@@ -22,7 +22,7 @@
 #include <robosherlock/utils/time.h>
 #include <robosherlock/DrawingAnnotator.h>
 
-#include <rs_addons/classifiers/RSClassifier.h>
+#include <rs_classifiers/classifiers/RSClassifier.h>
 
 class RSKNN : public RSClassifier
 {

@@ -17,7 +17,7 @@
 #include <opencv2/ml.hpp>
 
 
-#include <rs_addons/classifiers/RSRF.h>
+#include <rs_classifiers/classifiers/RSRF.h>
 
 using namespace cv;
 

@@ -23,7 +23,7 @@
 #include <robosherlock/utils/time.h>
 #include <robosherlock/DrawingAnnotator.h>
 
-#include <rs_addons/classifiers/RSKNN.h>
+#include <rs_classifiers/classifiers/RSKNN.h>
 #include <uima/api.hpp>
 
 using namespace cv;

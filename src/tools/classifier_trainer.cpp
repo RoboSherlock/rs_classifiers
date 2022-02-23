@@ -8,9 +8,9 @@
 #include <robosherlock/utils/time.h>
 #include <robosherlock/DrawingAnnotator.h>
 
-#include <rs_addons/classifiers/RSSVM.h>
-#include <rs_addons/classifiers/RSRF.h>
-#include <rs_addons/classifiers/RSKNN.h>
+#include <rs_classifiers/classifiers/RSSVM.h>
+#include <rs_classifiers/classifiers/RSRF.h>
+#include <rs_classifiers/classifiers/RSKNN.h>
 
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string.hpp>

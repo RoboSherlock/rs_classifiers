@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>rs_addons</name>
+  <name>rs_classifiers</name>
   <version>0.0.0</version>
-  <description>The RoboSherlock addons package. Collection of annotators under development</description>
+  <description>The RoboSherlock classifiers package. Collection of classifiers and corresponding annotators. Currently this package features a Knn, random forest and SVM classifier</description>
   <maintainer email="balintbe@cs.uni-bremen.de">Ferenc Balint-Benczedi</maintainer>
   <license>Apache 2.0</license>
 

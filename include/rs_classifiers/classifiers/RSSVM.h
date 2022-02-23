@@ -1,7 +1,7 @@
 //developed by: Rakib
 
-#ifndef RSRF_HEADER
-#define RSRF_HEADER
+#ifndef RSSVM_HEADER
+#define RSSVM_HEADER
 
 #include <iostream>
 #include <string>
@@ -21,29 +21,25 @@
 #include <robosherlock/utils/time.h>
 #include <robosherlock/DrawingAnnotator.h>
 
-#include <rs_addons/classifiers/RSClassifier.h>
+#include <rs_classifiers/classifiers/RSClassifier.h>
 
-
-class RSRF : public RSClassifier
+class RSSVM : public RSClassifier
 
 {
 
 public:
 
-  RSRF();
+  RSSVM();
 
   void trainModel(std::string train_matrix_name, std::string train_label_name, std::string trained_file_name);
 
-  int predict_multi_class(cv::Mat sample, cv::AutoBuffer<int>& out_votes);
-
-  void classify(std::string trained_file_name,std::string test_matrix_name, std::string test_label_name,std::string obj_classInDouble);
+  void classify(std::string trained_file_name,std::string test_matrix_name, std::string test_label_name, std::string obj_classInDouble);
 
   void classifyOnLiveData(std::string trained_file_name_saved, cv::Mat test_mat, double &det, double &confi);
 
-  void annotate_hypotheses(uima::CAS &tcas, std::string class_name, std::string feature_name, rs::ObjectHypothesis &cluster, std::string set_mode, double &confi);
+  void annotate_hypotheses (uima::CAS &tcas, std::string class_name, std::string feature_name, rs::ObjectHypothesis &cluster, std::string set_mode, double &confi);
 
-  ~ RSRF();
-
+  ~RSSVM();
 };
 
 #endif

@@ -1,9 +1,0 @@
-annotator:
-  description: adds a detection annotation SIMTRACK detector from KTH
-  implementation: rs_simtrack
-  name: SimtrackDetection
-capabilities:
-  inputs: ['rs.pcl.PointCloud']
-  outputs: 
-    - rs.annotation.Detection: ['VollMilch']
-parameters: {}

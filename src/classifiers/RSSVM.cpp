@@ -17,7 +17,7 @@
 
 
 
-#include <rs_addons/classifiers/RSSVM.h>
+#include <rs_classifiers/classifiers/RSSVM.h>
 
 //....................................Support vector machine........................................
 RSSVM::RSSVM()

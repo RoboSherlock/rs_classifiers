@@ -1,9 +1,0 @@
-annotator:
-  implementation: rs_templateAlignmentAnnotator
-  name: TemplateAlignmentAnnotator
-capabilities:
-  inputs:
-  - rs.annotation.Detection
-  outputs:
-  - rs.annotation.PoseAnnotation
-parameters: {}

@@ -17,7 +17,7 @@
 
 #include <ros/package.h>
 #include <boost/filesystem.hpp>
-#include <rs_addons/classifiers/RSSVM.h>
+#include <rs_classifiers/classifiers/RSSVM.h>
 #include <robosherlock/DrawingAnnotator.h>
 
 using namespace uima;

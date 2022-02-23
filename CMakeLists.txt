@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 #cmake_policy(NEW)
-project(rs_addons)
+project(rs_classifiers)
 
 
 find_package(simtrack_nodes QUIET)
@@ -47,7 +47,7 @@ message(STATUS " RS built with Caffe: " ${RS_WITH_CAFFE})
 ### Constants for project                                                      ##
 #################################################################################
 set(NAMESPACE rs_addons)
-set(TYPESYSTEM_CPP_PATH ${PROJECT_SOURCE_DIR}/include/rs_addons/types)
+set(TYPESYSTEM_CPP_PATH ${PROJECT_SOURCE_DIR}/include/rs_classifiers/types)
 set(TYPESYSTEM_XML_PATH ${PROJECT_SOURCE_DIR}/descriptors/typesystem)
 set(ANNOTATOR_PATH      ${PROJECT_SOURCE_DIR}/descriptors/annotators)
 set(ENGINE_PATH         ${PROJECT_SOURCE_DIR}/descriptors/analysis_engines)
@@ -161,46 +161,7 @@ target_link_libraries(rs_knnAnnotator rs_classifiers
     ${CATKIN_LIBRARIES}
     ${OpenCV_LIBRARIES})
 
-rs_add_library(rs_unrealGTAnnotator src/UnrealGTAnnotator.cpp)
-target_link_libraries(rs_unrealGTAnnotator
-    ${catkin_LIBRARIES}
-    ${OpenCV_LIBRARIES}
-    )
-
-
-# this needs to be renamed...if this is just for running test
-# data trhough the system it can an executable
-rs_add_library(rs_classifyOfflineAnnotator src/ClassifyOfflineAnnotator.cpp)
-target_link_libraries(rs_classifyOfflineAnnotator rs_classifiers
-    ${CATKIN_LIBRARIES}
-    ${OpenCV_LIBRARIES}
-    ${Boost_LIBRARIES})
-
-rs_add_library(rs_ssdDetectionAnnotator src/SSDDetectionAnnotator.cpp)
-target_link_libraries(rs_ssdDetectionAnnotator
-    ${CATKIN_LIBRARIES}
-    ${OpenCV_LIBRARIES}
-    ${Boost_LIBRARIES})
-
-rs_add_library(rs_fasterRCNNDetectionAnnotator src/FasterRCNNDetectionAnnotator.cpp)
-target_link_libraries(rs_fasterRCNNDetectionAnnotator
-    ${CATKIN_LIBRARIES}
-    ${OpenCV_LIBRARIES}
-     ${Boost_LIBRARIES})
-
-rs_add_library(rs_fcisInstanceSegmentationAnnotator src/FCISInstanceSegmentationAnnotator.cpp)
-target_link_libraries(rs_fcisInstanceSegmentationAnnotator
-    ${CATKIN_LIBRARIES}
-    ${OpenCV_LIBRARIES}
-    ${Boost_LIBRARIES})
-
-rs_add_library(rs_maskRCNNInstanceSegmentationAnnotator src/MaskRCNNInstanceSegmentationAnnotator.cpp)
-target_link_libraries(rs_maskRCNNInstanceSegmentationAnnotator
-    ${CATKIN_LIBRARIES}
-    ${OpenCV_LIBRARIES}
-    ${Boost_LIBRARIES})
-
 # download and install trained data
-add_custom_target(install_trained_data ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_trained_data.py)
+#add_custom_target(install_trained_data ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_trained_data.py)
 
-add_subdirectory(src/annotators)
+#add_subdirectory(src/annotators)
