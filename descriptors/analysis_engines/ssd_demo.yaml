@@ -1,7 +1,0 @@
-ae:
-  name: ssd_demo
-fixedflow:
-  - CollectionReader
-  - SSDDetectionAnnotator
-CollectionReader:
-  - camera_config_files: ['config_kinect_robot.ini']

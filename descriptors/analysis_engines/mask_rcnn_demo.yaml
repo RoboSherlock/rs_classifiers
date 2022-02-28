@@ -1,7 +1,0 @@
-ae:
-  name: mask_rcnn_demo
-fixedflow:
-  - CollectionReader
-  - MaskRCNNInstanceSegmentationAnnotator
-CollectionReader:
-  - camera_config_files: ['config_kinect_robot.ini']

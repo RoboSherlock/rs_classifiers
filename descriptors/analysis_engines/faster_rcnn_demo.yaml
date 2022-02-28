@@ -1,7 +1,0 @@
-ae:
-  name: faster_rcnn_demo
-fixedflow:
-  - CollectionReader
-  - FasterRCNNDetectionAnnotator
-CollectionReader:
-  - camera_config_files: ['config_kinect_robot.ini']

@@ -15,9 +15,9 @@ if(json_prolog_FOUND)
     set(OPTIONAL_json_prolog json_prolog)
 endif(json_prolog_FOUND)
 
-find_package(Caffe QUIET)
-find_package(aruco QUIET)
-find_package(MPI QUIET)
+#find_package(Caffe QUIET)
+#find_package(aruco QUIET)
+#find_package(MPI QUIET)
 
 find_package(Boost REQUIRED COMPONENTS system thread date_time python numpy filesystem regex)
 find_package(PythonLibs REQUIRED)
@@ -46,7 +46,7 @@ message(STATUS " RS built with Caffe: " ${RS_WITH_CAFFE})
 #################################################################################
 ### Constants for project                                                      ##
 #################################################################################
-set(NAMESPACE rs_addons)
+set(NAMESPACE rs_classifiers)
 set(TYPESYSTEM_CPP_PATH ${PROJECT_SOURCE_DIR}/include/rs_classifiers/types)
 set(TYPESYSTEM_XML_PATH ${PROJECT_SOURCE_DIR}/descriptors/typesystem)
 set(ANNOTATOR_PATH      ${PROJECT_SOURCE_DIR}/descriptors/annotators)
@@ -89,37 +89,6 @@ find_additional_files()
 #each containing a CMakeLists.txt here
 #add_subdirectory(src/xxx)
 
-catkin_python_setup()
-
-if(simtrack_nodes_FOUND)
-    rs_add_library(rs_simtrack src/SimtrackDetection.cpp)
-    target_link_libraries(rs_simtrack ${catkin_LIBRARIES})
-endif(simtrack_nodes_FOUND)
-
-if(aruco_FOUND)
-    message(STATUS "OPTIONAL MODULE aruco FOUND")
-    add_definitions( -DARUCO_FOUND)
-    message(STATUS "Building AR Markers Detector")
-    include_directories(${aruco_INCLUDE_DIRS})
-    rs_add_library(rs_arMarkersDetector src/ARMarkersDetector.cpp)
-    target_link_libraries(rs_arMarkersDetector ${CATKIN_LIBRARIES} ${aruco_LIBS})
-else(aruco_FOUND)
-    message(WARNING "Aruco not found. AR Markers Detector will NOT be built")
-endif(aruco_FOUND)
-
-if(Caffe_FOUND AND RS_WITH_CAFFE)
-  rs_add_library(rs_caffeClassification src/CaffeClassificationAnnotator.cpp)
-  target_link_libraries(rs_caffeClassification
-        ${catkin_LIBRARIES}
-        ${Caffe_LIBRARIES}
-        )
-  rs_add_library(rs_deCafClassifier src/DeCafClassifier.cpp)
-  target_link_libraries(rs_deCafClassifier
-        ${catkin_LIBRARIES}
-        ${PCL_LIBRARIES}
-        ${Caffe_LIBRARIES}
-        )
-endif()
 
 add_executable(featureExtractor src/tools/feature_extractor.cpp)
 target_link_libraries(featureExtractor
@@ -161,7 +130,3 @@ target_link_libraries(rs_knnAnnotator rs_classifiers
     ${CATKIN_LIBRARIES}
     ${OpenCV_LIBRARIES})
 
-# download and install trained data
-#add_custom_target(install_trained_data ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_trained_data.py)
-
-#add_subdirectory(src/annotators)
