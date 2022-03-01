@@ -6,8 +6,7 @@ find_package(catkin REQUIRED robosherlock
     message_generation
     message_runtime
 	rapidjson_ros
-    #${OPTIONAL_simtrack}
-    #${OPTIONAL_json_prolog}
+
     )
 
 message(STATUS " RS built with google googgles: " ${RS_WITH_GG})
