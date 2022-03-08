@@ -4,8 +4,8 @@ project(rs_classifiers)
 find_package(catkin REQUIRED robosherlock
     message_generation
     message_runtime
-    rapidjson_ros
-    )
+    rapidjson_ros)
+
 
 #################################################################################
 ### Constants for project                                                      ##
@@ -35,6 +35,7 @@ include_directories(
     ${catkin_INCLUDE_DIRS}
     )
 
+
 ################################################################################
 ## Update analysis engines, typesystem and include all relevant files         ##
 ################################################################################
@@ -56,8 +57,7 @@ target_link_libraries(featureExtractor
   ${PCL_LIBRARIES}
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
-  ${Boost_LIBRARIES}
-)
+  ${Boost_LIBRARIES})
 
 
 add_library(rs_classifiers src/classifiers/RSClassifier.cpp
