@@ -57,7 +57,6 @@ target_link_libraries(featureExtractor
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
   ${Boost_LIBRARIES}
-
 )
 
 
