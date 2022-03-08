@@ -1,16 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
-#cmake_policy(NEW)
 project(rs_classifiers)
 
 find_package(catkin REQUIRED robosherlock
     message_generation
     message_runtime
-	rapidjson_ros
-
+    rapidjson_ros
     )
-
-message(STATUS " RS built with google googgles: " ${RS_WITH_GG})
-#message(STATUS " RS built with Caffe: " ${RS_WITH_CAFFE})
 
 #################################################################################
 ### Constants for project                                                      ##
@@ -27,7 +22,7 @@ configure_file(${RS_PROJECT_CONFIG} ${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}_
 ################################################################################
 ## Find all include directories                                               ##
 ################################################################################
-find_include_dirs(RS_ADDONS_INCLUDE_DIRS_LIST)
+find_include_dirs(RS_Classifier_INCLUDE_DIRS_LIST)
 
 catkin_package(
     CATKIN_DEPENDS robosherlock
@@ -35,7 +30,7 @@ catkin_package(
 
 include_directories(
     ${RapidJSON_INCLUDE_DIRS}
-    ${RS_ADDONS_INCLUDE_DIRS_LIST}
+    ${RS_Classifier_INCLUDE_DIRS_LIST}
     ${Boost_INCLUDE_DIRS}
     ${catkin_INCLUDE_DIRS}
     )
